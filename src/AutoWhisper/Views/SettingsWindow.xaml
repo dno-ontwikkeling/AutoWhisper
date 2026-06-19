@@ -197,6 +197,54 @@
                     </StackPanel>
                 </Border>
 
+                <!-- Word Corrections Section -->
+                <TextBlock Text="Word Corrections" FontSize="16" FontWeight="SemiBold" Margin="0,16,0,12" />
+
+                <Border Background="#10FFFFFF" CornerRadius="8" Padding="16" Margin="0,0,0,8">
+                    <StackPanel>
+                        <TextBlock Text="Fix words that are consistently misheard or mistranslated. Matching is case-insensitive and whole-word."
+                                   Opacity="0.6" FontSize="12" Margin="0,0,0,12" TextWrapping="Wrap" />
+
+                        <ItemsControl x:Name="CorrectionsList">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,0,0,6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <ui:TextBox Grid.Column="0"
+                                                    PlaceholderText="heard as..."
+                                                    Text="{Binding From, UpdateSourceTrigger=PropertyChanged}"
+                                                    TextChanged="Correction_TextChanged" />
+                                        <TextBlock Grid.Column="1" Text="&#x2192;" FontSize="16"
+                                                   VerticalAlignment="Center" Margin="10,0" Opacity="0.7" />
+                                        <ui:TextBox Grid.Column="2"
+                                                    PlaceholderText="replace with..."
+                                                    Text="{Binding To, UpdateSourceTrigger=PropertyChanged}"
+                                                    TextChanged="Correction_TextChanged" />
+                                        <ui:Button Grid.Column="3" Margin="8,0,0,0"
+                                                   Appearance="Secondary"
+                                                   Click="DeleteCorrection_Click"
+                                                   ToolTip="Remove">
+                                            <ui:SymbolIcon Symbol="Delete24" />
+                                        </ui:Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <ui:Button Content="Add correction"
+                                   Icon="{ui:SymbolIcon Add24}"
+                                   Click="AddCorrection_Click"
+                                   Appearance="Secondary"
+                                   HorizontalAlignment="Left"
+                                   Margin="0,6,0,0" />
+                    </StackPanel>
+                </Border>
+
             </StackPanel>
         </ScrollViewer>
 

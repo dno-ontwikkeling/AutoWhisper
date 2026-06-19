@@ -6,6 +6,12 @@ namespace AutoWhisper.Services;
 
 public record WhisperModel(string Name, string FileName, string DisplayName, long SizeMB, string DownloadUrl);
 
+public class WordCorrection
+{
+    public string From { get; set; } = "";
+    public string To { get; set; } = "";
+}
+
 public class AppSettings
 {
     public KeyCode HotkeyKey { get; set; } = KeyCode.VcSpace;
@@ -16,6 +22,7 @@ public class AppSettings
     public string SelectedMicrophone { get; set; } = "";
     public int SilenceThreshold { get; set; } = 200;
     public bool NormalizeAudio { get; set; } = true;
+    public List<WordCorrection> WordCorrections { get; set; } = [];
 }
 
 public class SettingsService

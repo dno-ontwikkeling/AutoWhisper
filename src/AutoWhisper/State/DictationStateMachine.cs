@@ -92,6 +92,7 @@ public class DictationStateMachine
         try
         {
             var text = await _transcriptionService.TranscribeAsync(audioStream);
+            text = TextCorrectionService.Apply(text, settings.WordCorrections);
 
             if (string.IsNullOrWhiteSpace(text))
             {
