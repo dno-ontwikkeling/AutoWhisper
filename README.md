@@ -12,7 +12,7 @@ All processing happens locally using OpenAI's Whisper model. No cloud services, 
 - **Hold-to-record dictation** — press and hold a configurable hotkey (default: Ctrl+Shift+Space), speak, release to transcribe and paste
 - **Fully offline** — Whisper runs locally, audio is processed in-memory only
 - **GPU acceleration** — auto-detects CUDA (NVIDIA) and Vulkan (AMD/Intel/NVIDIA) with CPU fallback
-- **Multiple models** — 5 multilingual Whisper model sizes from Tiny (39 MB) to Large v3 (3.1 GB)
+- **Multiple models** — 7 multilingual Whisper model sizes from Tiny (39 MB) to Large v3 (3.1 GB), including fast Large v3 Turbo variants
 - **In-app model download** — download models directly from Hugging Face with progress tracking and cancellation
 - **Automatic model fallback** — if the selected model is missing, falls back to any available downloaded model
 - **28 languages** — auto-detection or manual language selection

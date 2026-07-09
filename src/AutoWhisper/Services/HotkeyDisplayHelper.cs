@@ -11,7 +11,7 @@ public static class HotkeyDisplayHelper
         bool hasCtrl = modifiers.HasFlag(EventMask.LeftCtrl) || modifiers.HasFlag(EventMask.RightCtrl);
         bool hasAlt = modifiers.HasFlag(EventMask.LeftAlt) || modifiers.HasFlag(EventMask.RightAlt);
 
-        // AltGr shows as Ctrl+Alt on Windows — display it as "AltGr" instead
+        // AltGr shows as Ctrl+Alt on Windows - display it as "AltGr" instead
         if (hasCtrl && hasAlt)
         {
             parts.Add("AltGr");

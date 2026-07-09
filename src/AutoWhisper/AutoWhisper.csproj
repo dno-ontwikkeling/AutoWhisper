@@ -29,10 +29,10 @@
     <PackageReference Include="InputSimulatorStandard" Version="1.0.0" />
 
     <!-- Whisper speech-to-text -->
-    <PackageReference Include="Whisper.net" Version="1.9.0" />
-    <PackageReference Include="Whisper.net.Runtime" Version="1.9.0" />
-    <PackageReference Include="Whisper.net.Runtime.Cuda.Windows" Version="1.9.0" />
-    <PackageReference Include="Whisper.net.Runtime.Vulkan" Version="1.9.0" />
+    <PackageReference Include="Whisper.net" Version="1.9.1" />
+    <PackageReference Include="Whisper.net.Runtime" Version="1.9.1" />
+    <PackageReference Include="Whisper.net.Runtime.Cuda.Windows" Version="1.9.1" />
+    <PackageReference Include="Whisper.net.Runtime.Vulkan" Version="1.9.1" />
   </ItemGroup>
 
   <ItemGroup>

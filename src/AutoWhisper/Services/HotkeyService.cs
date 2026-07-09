@@ -26,7 +26,7 @@ public class HotkeyService : IDisposable
 
 
     /// <summary>
-    /// Enter capture mode — normal hotkey detection is paused, and the next
+    /// Enter capture mode - normal hotkey detection is paused, and the next
     /// non-modifier key press fires HotkeyCaptured instead.
     /// </summary>
     public void StartCapture()
@@ -36,7 +36,7 @@ public class HotkeyService : IDisposable
     }
 
     /// <summary>
-    /// Exit capture mode — resume normal hotkey detection.
+    /// Exit capture mode - resume normal hotkey detection.
     /// </summary>
     public void StopCapture()
     {
