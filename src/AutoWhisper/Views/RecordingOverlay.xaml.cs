@@ -34,7 +34,7 @@ public partial class RecordingOverlay : Window
 
     protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
     {
-        // Prevent actual close during normal operation — just hide instead
+        // Prevent actual close during normal operation - just hide instead
         // Only allow close during app shutdown
         if (Application.Current?.ShutdownMode == ShutdownMode.OnExplicitShutdown)
         {

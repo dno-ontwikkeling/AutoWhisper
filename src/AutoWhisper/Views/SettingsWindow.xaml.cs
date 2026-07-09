@@ -197,7 +197,7 @@ public partial class SettingsWindow : Wpf.Ui.Controls.FluentWindow
                 }
             }
 
-            // Streams are closed — safe to rename
+            // Streams are closed - safe to rename
             if (File.Exists(destPath))
                 File.Delete(destPath);
             File.Move(tempPath, destPath);

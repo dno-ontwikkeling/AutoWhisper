@@ -12,7 +12,7 @@ public class TextInjectionService
     {
         if (string.IsNullOrWhiteSpace(text)) return;
 
-        // Save previous clipboard and set new text — must run on UI thread
+        // Save previous clipboard and set new text - must run on UI thread
         DataObject? previousClipboard = null;
         bool clipboardSet = false;
 

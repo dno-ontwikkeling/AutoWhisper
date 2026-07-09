@@ -39,11 +39,13 @@ public class SettingsService
 
     public static readonly WhisperModel[] AvailableModels =
     [
-        new("tiny",      "ggml-tiny.bin",      "Tiny (39 MB)",        39, "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin"),
-        new("base",      "ggml-base.bin",      "Base (142 MB)",      142, "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.bin"),
-        new("small",     "ggml-small.bin",     "Small (466 MB)",     466, "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin"),
-        new("medium",    "ggml-medium.bin",    "Medium (1.5 GB)",   1500, "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-medium.bin"),
-        new("large-v3",  "ggml-large-v3.bin",  "Large v3 (3.1 GB)", 3100, "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3.bin"),
+        new("tiny",              "ggml-tiny.bin",               "Tiny (39 MB)",                 39, "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin"),
+        new("base",              "ggml-base.bin",               "Base (142 MB)",               142, "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.bin"),
+        new("small",             "ggml-small.bin",              "Small (466 MB)",              466, "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin"),
+        new("medium",            "ggml-medium.bin",             "Medium (1.5 GB)",            1500, "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-medium.bin"),
+        new("large-v3",          "ggml-large-v3.bin",           "Large v3 (3.1 GB)",          3100, "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3.bin"),
+        new("large-v3-turbo-q5", "ggml-large-v3-turbo-q5_0.bin", "Large v3 Turbo Q5 (547 MB)", 547, "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3-turbo-q5_0.bin"),
+        new("large-v3-turbo",    "ggml-large-v3-turbo.bin",     "Large v3 Turbo (1.6 GB)",    1620, "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3-turbo.bin"),
     ];
 
     public static readonly (string Code, string Name)[] SupportedLanguages =

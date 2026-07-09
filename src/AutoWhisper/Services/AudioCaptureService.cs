@@ -12,7 +12,7 @@ public class AudioCaptureService : IDisposable
     private long _totalBytesRecorded;
     private Exception? _recordingError;
 
-    // Preview mode — lightweight mic test without buffering audio
+    // Preview mode - lightweight mic test without buffering audio
     private WaveInEvent? _previewWaveIn;
     private volatile float _latestRms;
 
@@ -98,7 +98,7 @@ public class AudioCaptureService : IDisposable
                 // Find the actual start of PCM data by locating the "data" chunk
                 int dataOffset = FindDataChunkOffset(_audioBuffer);
 
-                // Calculate RMS using streaming approach — no large allocation
+                // Calculate RMS using streaming approach - no large allocation
                 _audioBuffer.Position = dataOffset;
                 double sumSquares = 0;
                 long sampleCount = 0;

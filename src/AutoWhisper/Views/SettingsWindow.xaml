@@ -72,6 +72,94 @@
                             <TextBlock Text="Larger models are more accurate but slower" Opacity="0.6" FontSize="12" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <ui:SymbolIcon Symbol="QuestionCircle24"
+                                           FontSize="18"
+                                           Opacity="0.7"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,10,0"
+                                           ToolTipService.InitialShowDelay="200"
+                                           ToolTipService.ShowDuration="60000"
+                                           ToolTipService.Placement="Left">
+                                <ui:SymbolIcon.ToolTip>
+                                    <ToolTip MaxWidth="460">
+                                        <StackPanel Margin="4">
+                                            <TextBlock Text="Which model should I pick?" FontWeight="SemiBold" TextAlignment="Left" Margin="0,0,0,8" />
+                                            <Grid>
+                                                <Grid.Resources>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Left" />
+                                                        <Setter Property="Padding" Value="0,3,16,3" />
+                                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                                    </Style>
+                                                </Grid.Resources>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+
+                                                <!-- Recommended row highlight -->
+                                                <Border Grid.Row="6" Grid.ColumnSpan="4" Background="#22FFFFFF" CornerRadius="4" />
+
+                                                <!-- Header -->
+                                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Model" FontWeight="SemiBold" />
+                                                <TextBlock Grid.Row="0" Grid.Column="1" Text="Size" FontWeight="SemiBold" />
+                                                <TextBlock Grid.Row="0" Grid.Column="2" Text="Speed" FontWeight="SemiBold" />
+                                                <TextBlock Grid.Row="0" Grid.Column="3" Text="Accuracy" FontWeight="SemiBold" />
+                                                <Border Grid.Row="0" Grid.ColumnSpan="4" Height="1" Background="#33FFFFFF" VerticalAlignment="Bottom" />
+
+                                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Tiny" />
+                                                <TextBlock Grid.Row="1" Grid.Column="1" Text="39 MB" />
+                                                <TextBlock Grid.Row="1" Grid.Column="2" Text="Fastest" />
+                                                <TextBlock Grid.Row="1" Grid.Column="3" Text="Low" />
+
+                                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Base" />
+                                                <TextBlock Grid.Row="2" Grid.Column="1" Text="142 MB" />
+                                                <TextBlock Grid.Row="2" Grid.Column="2" Text="Very fast" />
+                                                <TextBlock Grid.Row="2" Grid.Column="3" Text="Fair" />
+
+                                                <TextBlock Grid.Row="3" Grid.Column="0" Text="Small" />
+                                                <TextBlock Grid.Row="3" Grid.Column="1" Text="466 MB" />
+                                                <TextBlock Grid.Row="3" Grid.Column="2" Text="Fast" />
+                                                <TextBlock Grid.Row="3" Grid.Column="3" Text="Good" />
+
+                                                <TextBlock Grid.Row="4" Grid.Column="0" Text="Medium" />
+                                                <TextBlock Grid.Row="4" Grid.Column="1" Text="1.5 GB" />
+                                                <TextBlock Grid.Row="4" Grid.Column="2" Text="Slow" />
+                                                <TextBlock Grid.Row="4" Grid.Column="3" Text="Very good" />
+
+                                                <TextBlock Grid.Row="5" Grid.Column="0" Text="Large v3" />
+                                                <TextBlock Grid.Row="5" Grid.Column="1" Text="3.1 GB" />
+                                                <TextBlock Grid.Row="5" Grid.Column="2" Text="Slowest" />
+                                                <TextBlock Grid.Row="5" Grid.Column="3" Text="Best" />
+
+                                                <TextBlock Grid.Row="6" Grid.Column="0" Text="Large v3 Turbo Q5 ★" FontWeight="SemiBold" Padding="4,3,16,3" />
+                                                <TextBlock Grid.Row="6" Grid.Column="1" Text="547 MB" FontWeight="SemiBold" />
+                                                <TextBlock Grid.Row="6" Grid.Column="2" Text="Fast" FontWeight="SemiBold" />
+                                                <TextBlock Grid.Row="6" Grid.Column="3" Text="Near-best" FontWeight="SemiBold" />
+
+                                                <TextBlock Grid.Row="7" Grid.Column="0" Text="Large v3 Turbo" />
+                                                <TextBlock Grid.Row="7" Grid.Column="1" Text="1.6 GB" />
+                                                <TextBlock Grid.Row="7" Grid.Column="2" Text="Fast" />
+                                                <TextBlock Grid.Row="7" Grid.Column="3" Text="Near-best" />
+                                            </Grid>
+                                            <TextBlock TextWrapping="Wrap" TextAlignment="Left" Opacity="0.7" MaxWidth="360" Margin="0,8,0,0"
+                                                       Text="★ Recommended. Turbo models match Large v3 accuracy but run much faster. Bigger models need more disk, RAM/VRAM, and time." />
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ui:SymbolIcon.ToolTip>
+                            </ui:SymbolIcon>
                             <ComboBox x:Name="ModelCombo"
                                       Width="250"
                                       SelectionChanged="ModelCombo_Changed" />
@@ -150,7 +238,7 @@
                                 <TextBlock Text="Speak and drag the marker below your voice level" Opacity="0.6" FontSize="12" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <TextBlock x:Name="RmsValueText" Text="RMS: —" Opacity="0.6" FontSize="12"
+                                <TextBlock x:Name="RmsValueText" Text="RMS: -" Opacity="0.6" FontSize="12"
                                            VerticalAlignment="Center" Margin="0,0,12,0" />
                                 <ui:Button x:Name="TestMicButton"
                                            Content="Test Mic"

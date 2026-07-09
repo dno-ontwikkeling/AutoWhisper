@@ -83,6 +83,8 @@ begin
     2: Result := 'ggml-small.bin';
     3: Result := 'ggml-medium.bin';
     4: Result := 'ggml-large-v3.bin';
+    5: Result := 'ggml-large-v3-turbo-q5_0.bin';
+    6: Result := 'ggml-large-v3-turbo.bin';
   else
     RaiseException('Invalid model index: ' + IntToStr(Index));
   end;
@@ -96,6 +98,8 @@ begin
     2: Result := 'small';
     3: Result := 'medium';
     4: Result := 'large-v3';
+    5: Result := 'large-v3-turbo-q5';
+    6: Result := 'large-v3-turbo';
   else
     RaiseException('Invalid model index: ' + IntToStr(Index));
   end;
@@ -238,14 +242,14 @@ procedure InitializeWizard;
 var
   DescLabel: TNewStaticText;
 begin
-  // Install type page — only meaningful when existing install is detected
+  // Install type page - only meaningful when existing install is detected
   InstallTypePage := CreateInputOptionPage(wpWelcome,
     'Existing Installation Detected',
     'AutoWhisper is already installed on this computer.',
     'Choose how you would like to proceed:',
     True, False);
-  InstallTypePage.Add('Update — Keep my settings and downloaded models');
-  InstallTypePage.Add('Clean Install — Remove everything and start fresh');
+  InstallTypePage.Add('Update - Keep my settings and downloaded models');
+  InstallTypePage.Add('Clean Install - Remove everything and start fresh');
   InstallTypePage.SelectedValueIndex := 0;
 
   // Model selection page (radio buttons)
@@ -260,7 +264,9 @@ begin
   ModelPage.Add('Small (466 MB) - Balanced speed and accuracy');
   ModelPage.Add('Medium (1.5 GB) - Slow, very accurate');
   ModelPage.Add('Large v3 (3.1 GB) - Slowest, best accuracy');
-  ModelPage.SelectedValueIndex := 2;
+  ModelPage.Add('Large v3 Turbo Q5 (547 MB) - Recommended, near-best accuracy, fast');
+  ModelPage.Add('Large v3 Turbo (1.6 GB) - Best accuracy, fast');
+  ModelPage.SelectedValueIndex := 5;
 
   // Language selection page (dropdown)
   LanguageCustomPage := CreateCustomPage(ModelPage.ID,
@@ -385,7 +391,7 @@ var
 begin
   if CurStep = ssPostInstall then
   begin
-    // On upgrade, skip model download and settings — keep existing files
+    // On upgrade, skip model download and settings - keep existing files
     if IsUpgradeInstall then
       Exit;
 
