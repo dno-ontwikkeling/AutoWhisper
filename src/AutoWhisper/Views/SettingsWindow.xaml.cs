@@ -1,4 +1,6 @@
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +25,7 @@ public partial class SettingsWindow : Wpf.Ui.Controls.FluentWindow
     private AudioCaptureService? _previewService;
     private DispatcherTimer? _levelTimer;
     private double _smoothedRms;
+    private readonly ObservableCollection<WordCorrection> _corrections = [];
 
     public event Action? SettingsSaved;
 
@@ -68,6 +71,11 @@ public partial class SettingsWindow : Wpf.Ui.Controls.FluentWindow
         NormalizeToggle.IsChecked = settings.NormalizeAudio;
         UpdateThresholdMarker();
 
+        _corrections.Clear();
+        foreach (var c in settings.WordCorrections ?? [])
+            _corrections.Add(new WordCorrection { From = c.From, To = c.To });
+        CorrectionsList.ItemsSource = _corrections;
+
         _isLoading = false;
     }
 
@@ -88,6 +96,11 @@ public partial class SettingsWindow : Wpf.Ui.Controls.FluentWindow
         var langIndex = LanguageCombo.SelectedIndex;
         if (langIndex >= 0 && langIndex < SettingsService.SupportedLanguages.Length)
             settings.Language = SettingsService.SupportedLanguages[langIndex].Code;
+
+        settings.WordCorrections = _corrections
+            .Where(c => !string.IsNullOrWhiteSpace(c.From))
+            .Select(c => new WordCorrection { From = c.From.Trim(), To = (c.To ?? "").Trim() })
+            .ToList();
 
         _settingsService.Save();
         SetAutoStart(settings.LaunchAtStartup);
@@ -404,6 +417,26 @@ public partial class SettingsWindow : Wpf.Ui.Controls.FluentWindow
     }
 
     private void NormalizeToggle_Changed(object sender, RoutedEventArgs e)
+    {
+        AutoSave();
+    }
+
+    private void AddCorrection_Click(object sender, RoutedEventArgs e)
+    {
+        _corrections.Add(new WordCorrection());
+        // No AutoSave yet: empty rows are filtered out on save anyway.
+    }
+
+    private void DeleteCorrection_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is FrameworkElement { DataContext: WordCorrection correction })
+        {
+            _corrections.Remove(correction);
+            AutoSave();
+        }
+    }
+
+    private void Correction_TextChanged(object sender, TextChangedEventArgs e)
     {
         AutoSave();
     }
